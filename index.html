@@ -1,26 +1,73 @@
 <!doctype html>
-<html lang="es-PE" data-type="place">
+<html lang="es-PE" data-type="place" data-radius="sharp" data-buttons="arrow" data-motion>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="canonical" href="https://islaestudioperu.com/">
 <title>Isla Studio | Uñas y cosmetología en San Martín de Porres, Lima</title>
-<meta name="description" content="Isla Studio es un estudio de uñas y cosmetología en San Martín de Porres, Lima. Manicure, uñas en gel y acrílicas, nail art y pedicure. Reserva tu cita por Instagram.">
-<meta name="site-kind" content="other"><meta name="page-type" content="place"><meta name="page-kind" content="place">
-<meta name="theme-color" content="#efe9e0">
+<meta name="description" content="Estudio de uñas y cosmetología en San Martín de Porres, Lima: manicure, uñas en gel y acrílicas, nail art y pedicure. Citas por mensaje en Instagram.">
+<link rel="canonical" href="https://islaestudioperu.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://islaestudioperu.com/">
 <meta property="og:locale" content="es_PE">
 <meta property="og:site_name" content="Isla Studio">
 <meta property="og:title" content="Isla Studio | Uñas y cosmetología en San Martín de Porres">
-<meta property="og:description" content="Manicure, uñas en gel y acrílicas, nail art y pedicure en San Martín de Porres, Lima. Reserva por Instagram.">
+<meta property="og:description" content="Manicure, gel, acrílicas, nail art y pedicure en San Martín de Porres, Lima. Citas por Instagram.">
 <meta property="og:image" content="https://islaestudioperu.com/img/manicure-gel-1200x630.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232e5b44'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' text-anchor='middle' fill='%23efe9e0'%3EI%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#eeecea">
+<meta name="site-kind" content="other"><meta name="page-type" content="place"><meta name="page-kind" content="place">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400..600&family=Work+Sans:wght@400..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #eeecea; --p-surface: #e4e1dd; --p-ink: #333231; --p-muted: #625f5b;
+  --p-accent: #5c6b54; --p-accent-ink: #ffffff; --p-action: #5c6b54; --p-action-ink: #ffffff;
+  --p-inv-bg: #333231; --p-inv-surface: #3e3d3c; --p-inv-ink: #eeecea; --p-inv-muted: #adaba9;
+  --p-inv-accent: #eeecea; --p-inv-accent-ink: #333231; --p-inv-action: #eeecea; --p-inv-action-ink: #333231;
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-text: "Outfit", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/picture-develops/moment.js">
+<style>
+  .rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: 16px; line-height: 24px; }
+  .type-moment { margin: 0; max-width: none; width: 100%; font: var(--display-weight) clamp(40px, 6vw, 88px)/1.02 var(--font-display); letter-spacing: -0.03em; }
+  .type-moment a { display: block; color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.12em; text-decoration-color: transparent; transition: text-decoration-color 180ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .type-moment a:hover, .type-moment a:focus-visible { text-decoration-color: currentColor; }
+  #visit .visit-head { display: grid; gap: var(--s-4); margin-bottom: var(--s-7); }
+  .strip { margin-top: var(--s-7); }
+  .strip a, .pair a { display: block; overflow: hidden; color: inherit; }
+  .strip img, .pair img { display: block; width: 100%; object-fit: cover; transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .strip img { aspect-ratio: 1 / 1; }
+  .pair img { aspect-ratio: 4 / 3; }
+  @media (hover: hover) and (pointer: fine) { .strip a:hover img, .pair a:hover img { transform: scale(1.03); } }
+  @media (max-width: 1023px) { #visit .pl-photo { margin-top: var(--s-7); } }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    #servicios .grid--top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #servicios .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    #servicios .grid > * { grid-column: auto; }
+  }
+  @media (max-width: 639px) {
+    .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .strip > * { grid-column: auto; }
+    .strip > :nth-child(n+3) { display: none; }
+  }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,176 +88,171 @@
 </script>
 </head>
 <body>
-<!-- Isla Studio. kind: place (nail & cosmetology studio). deal: palette clay-pine (warm stone ground, deep green accent:
-     a calm, clean ground that lets nail colour read true), type Vollkorn / Work Sans, radius soft, hero place,
-     moment picture-develops (about photo). Photographs are STAND-INS from Wikimedia Commons until the client's own. -->
-<a class="skip" href="#main">Saltar al contenido</a>
-
-<header class="nav" id="top">
+<!-- type: place (compact page, 8 photographs)
+     deal: hero place (printed), nav nav-cards, footer footer-visit, rhythm space, buttons arrow, mark leaf,
+     offer strip, place pair, type moment address, rooms layout not used; close close-type (no photograph left)
+     palette three-stones (stone ground and a muted olive accent, the calm of a manicure table), type outfit, radius sharp
+     moments: picture-develops on the visit photograph (the one photograph that develops as the studio comes into view) -->
+<header class="nav">
   <div class="wrap nav__bar">
-    <a class="logo" href="#top" aria-label="Isla Studio, inicio"><span class="logo__mark" aria-hidden="true"></span>Isla Studio</a>
-    <nav class="nav__links" id="menu" aria-label="Principal">
-      <a href="#servicios">Servicios</a>
-      <a href="#trabajos">Diseños</a>
-      <a href="#estudio">El estudio</a>
-      <a href="#reservar">Cómo reservar</a>
-      <a class="btn btn--primary nav__menu-cta" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar cita</a>
+    <a class="skip-link" href="#top">Saltar al contenido</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="leaf" aria-hidden="true"></span>Isla Studio</a>
+    <nav class="nav__links" aria-label="Principal">
+      <div class="nav__item">
+        <a class="nav__link" href="#servicios">Servicios <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <a class="menu-card span-4" href="#manos">
+              <div class="panel"><img class="frame__img" src="img/francesa-glitter-600x750.jpg" width="600" height="750" alt="Uñas con francesa y glitter" loading="lazy"></div>
+              <span class="t-card">Manos</span>
+              <span class="t-small muted">Manicure y uñas en gel</span>
+            </a>
+            <a class="menu-card span-4" href="#largo">
+              <div class="panel"><img class="frame__img" src="img/stiletto-dorado-800x800.jpg" width="800" height="800" alt="Uñas stiletto en nude con mariposas doradas" loading="lazy"></div>
+              <span class="t-card">Largo y diseño</span>
+              <span class="t-small muted">Acrílicas y nail art</span>
+            </a>
+            <a class="menu-card span-4" href="#pies">
+              <div class="panel"><img class="frame__img" src="img/pedicure-francesa-700x434.jpg" width="700" height="434" alt="Pedicure con francesa blanca" loading="lazy"></div>
+              <span class="t-card">Pies y cuidado</span>
+              <span class="t-small muted">Pedicure y cosmetología</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#disenos">Diseños</a></div>
+      <div class="nav__item"><a class="nav__link" href="#visit">Dónde estamos</a></div>
     </nav>
-    <a class="btn btn--primary nav__cta" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar cita</a>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
-      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar cita</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menú"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
   </div>
 </header>
 
-<main id="main">
-  <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-h">
-    <div class="hero__media" data-enter>
-      <img src="img/manicure-gel-2000x900.jpg"
-           srcset="img/manicure-gel-800x900.jpg 800w,
-                   img/manicure-gel-1400x700.jpg 1400w,
-                   img/manicure-gel-2000x900.jpg 2000w"
-           sizes="100vw" width="2000" height="900" fetchpriority="high"
-           alt="Mano con uñas largas en gel, francesa negra con nail art, sobre un suéter gris">
+<main id="top">
+  <section class="hero hero--place" data-enter aria-labelledby="hero-h">
+    <picture class="hero__bg" data-phone-fill style="--ly-pos: 50% 50%"><source media="(max-width: 639px)" srcset="img/manicure-gel-800x900.jpg"><img src="img/manicure-gel-2000x900.jpg" srcset="img/manicure-gel-1400x700.jpg 1400w, img/manicure-gel-2000x900.jpg 2000w" sizes="100vw" width="2000" height="900" alt="Manos con uñas largas en punta, francesa negra y nail art, sobre un suéter gris" fetchpriority="high"></picture>
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <h1 id="hero-h">Estudio de uñas en San Martín de Porres</h1>
+        <p class="hero__lead">Manicure, gel, acrílicas, nail art y pedicure en Lima. Las citas se piden por Instagram.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar cita</a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="visit" data-place="visit" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="visit-head">
+        <h2 id="visit-h">Dónde está el estudio</h2>
+        <p class="type-moment"><a class="type-moment__link" href="https://www.google.com/maps/search/?api=1&amp;query=San+Mart%C3%ADn+de+Porres%2C+Lima" target="_blank" rel="noopener">San Martín de Porres, Lima</a></p>
+      </div>
+      <div class="grid grid--top">
+        <div class="span-6">
+          <div class="visit visit--card">
+            <div class="visit__cols">
+              <div class="visit__col stack-4">
+                <address class="visit__address">San Martín de Porres<br>Lima, Perú</address>
+                <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=San+Mart%C3%ADn+de+Porres%2C+Lima" target="_blank" rel="noopener">Ver la zona</a>
+              </div>
+              <div class="visit__col stack-4">
+                <p class="visit__address">Citas por mensaje directo</p>
+                <a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">@islastudio.pe</a>
+              </div>
+            </div>
+            <ul class="visit__rows">
+              <li><span>Precio y duración</span><span>Te los damos por mensaje, según el diseño</span></li>
+            </ul>
+          </div>
+        </div>
+        <figure class="pl-photo pl-photo--end span-6 start-7" data-moment="picture-develops" style="--pl-r: 1.3333; --pos: 50% 55%"><img src="img/unas-piedras-800x1066.jpg" srcset="img/unas-piedras-600x800.jpg 600w, img/unas-piedras-800x1066.jpg 800w" sizes="(max-width: 1023px) 92vw, 588px" alt="Uñas en gris oscuro con piedras pequeñas y degradado con glitter" width="800" height="1066" loading="lazy"></figure>
+      </div>
     </div>
-    <div class="wrap hero__text" data-enter>
-      <h1 id="hero-h">Uñas y cosmetología en San Martín de Porres</h1>
-      <div class="hero__side">
-        <p class="lead">Manicure, uñas en gel y acrílicas, nail art y pedicure en un estudio pensado para que salgas con las manos que imaginaste.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar por Instagram <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h8M5.5 2.5 9 6l-3.5 3.5"/></svg></a>
-          <a class="btn btn--secondary" href="#servicios">Ver servicios</a>
+  </section>
+
+  <section class="section" id="servicios" aria-labelledby="servicios-h">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div><h2 id="servicios-h">Servicios de uñas y cosmetología</h2><p>Primero vemos tu uña y el diseño que buscas, después elegimos la técnica.</p></div>
+        <a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Ver trabajos en Instagram</a>
+      </div>
+      <div class="grid grid--top">
+        <div class="span-4" id="manos">
+          <p class="t-label">Manos</p>
+          <ul class="rows">
+            <li><span class="rows__name">Manicure<small>Limpieza, forma, cutícula y esmalte</small></span></li>
+            <li><span class="rows__name">Uñas en gel<small>Esmaltado semipermanente</small></span></li>
+          </ul>
+        </div>
+        <div class="span-4" id="largo">
+          <p class="t-label">Largo y diseño</p>
+          <ul class="rows">
+            <li><span class="rows__name">Uñas acrílicas<small>El largo y la forma que quieras</small></span></li>
+            <li><span class="rows__name">Nail art<small>Francesa, dibujo a mano, glitter, piedras</small></span></li>
+          </ul>
+        </div>
+        <div class="span-4" id="pies">
+          <p class="t-label">Pies y cuidado</p>
+          <ul class="rows">
+            <li><span class="rows__name">Pedicure<small>Esmalte clásico o en gel</small></span></li>
+            <li><span class="rows__name">Cosmetología<small>Pregúntanos por los tratamientos</small></span></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- SERVICIOS (lista por confirmar con el cliente) -->
-  <section class="section" id="servicios" aria-labelledby="serv-h">
-    <div class="wrap split">
-      <div class="split__text">
-        <h2 id="serv-h">Servicios de uñas y cuidado</h2>
-        <p class="section-lead">Cuéntanos qué diseño tienes en mente y te recomendamos la técnica que mejor dura en tus uñas.</p>
-        <ul class="rows">
-          <li><span class="rows__name">Manicure</span><span class="rows__note">Limpieza, forma, cutícula y esmaltado</span></li>
-          <li><span class="rows__name">Uñas en gel</span><span class="rows__note">Esmaltado semipermanente con brillo duradero</span></li>
-          <li><span class="rows__name">Uñas acrílicas</span><span class="rows__note">Largo y forma a tu medida</span></li>
-          <li><span class="rows__name">Nail art</span><span class="rows__note">Francesa, dibujos a mano, glitter y piedras</span></li>
-          <li><span class="rows__name">Pedicure</span><span class="rows__note">Cuidado de pies con esmaltado clásico o en gel</span></li>
-          <li><span class="rows__name">Cosmetología</span><span class="rows__note">Cuidado y tratamientos de belleza</span></li>
-        </ul>
-        <p class="small">Precios y duración por mensaje, según el diseño.</p>
+      <div class="grid strip">
+        <a class="span-3" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><img src="img/francesa-glitter-600x750.jpg" srcset="img/francesa-glitter-360x450.jpg 360w, img/francesa-glitter-600x750.jpg 600w" sizes="(max-width: 639px) 44vw, 282px" alt="Francesa con glitter en el dedo anular" width="600" height="750" loading="lazy"></a>
+        <a class="span-3" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><img src="img/stiletto-dorado-800x800.jpg" srcset="img/stiletto-dorado-360x360.jpg 360w, img/stiletto-dorado-800x800.jpg 800w" sizes="(max-width: 639px) 44vw, 282px" alt="Uñas stiletto en nude con mariposas doradas" width="800" height="800" loading="lazy"></a>
+        <a class="span-3" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><img src="img/rayas-glitter-800x800.jpg" srcset="img/rayas-glitter-360x360.jpg 360w, img/rayas-glitter-800x800.jpg 800w" sizes="(max-width: 639px) 44vw, 282px" alt="Uñas con rayas diagonales negras y glitter dorado" width="800" height="800" loading="lazy"></a>
+        <a class="span-3" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><img src="img/tips-unas-600x750.jpg" srcset="img/tips-unas-360x450.jpg 360w, img/tips-unas-600x750.jpg 600w" sizes="(max-width: 639px) 44vw, 282px" alt="Caja de tips transparentes para extensiones de uñas" width="600" height="750" loading="lazy"></a>
       </div>
-      <figure class="photo photo--tall">
-        <img src="img/francesa-glitter-900x1125.jpg"
-             srcset="img/francesa-glitter-600x750.jpg 600w,
-                     img/francesa-glitter-900x1125.jpg 900w"
-             sizes="(max-width: 860px) 100vw, 45vw" width="900" height="1125" loading="lazy" decoding="async"
-             alt="Manicure francesa en tono nude con glitter dorado en el dedo anular">
-      </figure>
     </div>
   </section>
 
-  <!-- TRABAJOS (galería: reemplazar por fotos reales del Instagram) -->
-  <section class="section section--surface" id="trabajos" aria-labelledby="trab-h">
+  <section class="section" id="disenos" aria-labelledby="disenos-h">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="trab-h">Diseños para inspirarte</h2>
+      <div class="section-head section-head--split">
+        <div><h2 id="disenos-h">Ideas para tu próximo diseño</h2><p>Mándanos una foto de referencia o cuéntanos la idea por mensaje.</p></div>
         <a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Ver más en @islastudio.pe</a>
       </div>
-      <div class="gallery">
-        <a class="g g--a" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas negras con piedras en Instagram">
-          <img src="img/unas-piedras-800x1066.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Uñas almendra negras con piedras brillantes">
-        </a>
-        <a class="g g--b" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver nail art rosa texturizado en Instagram">
-          <img src="img/nail-art-rosa-1000x620.jpg" width="1000" height="620" loading="lazy" decoding="async" alt="Nail art rosa con textura de encaje">
-        </a>
-        <a class="g g--c" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas stiletto doradas en Instagram">
-          <img src="img/stiletto-dorado-800x800.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Uñas stiletto con detalles dorados">
-        </a>
-        <a class="g g--d" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver diseño de rayas con glitter en Instagram">
-          <img src="img/rayas-glitter-800x800.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Diseño de rayas negras sobre glitter dorado">
-        </a>
-        <a class="g g--e" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver pedicure francesa en Instagram">
-          <img src="img/pedicure-francesa-1000x620.jpg" width="1000" height="620" loading="lazy" decoding="async" alt="Pedicure francesa clásica">
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EL ESTUDIO -->
-  <section class="section" id="estudio" aria-labelledby="est-h">
-    <div class="wrap split split--rev">
-      <figure class="photo photo--tall develop">
-        <img src="img/tips-unas-900x1125.jpg"
-             srcset="img/tips-unas-600x750.jpg 600w,
-                     img/tips-unas-900x1125.jpg 900w"
-             sizes="(max-width: 860px) 100vw, 45vw" width="900" height="1125" loading="lazy" decoding="async"
-             alt="Caja de tips para uñas esculpidas ordenados por tamaño">
-      </figure>
-      <div class="split__text">
-        <h2 id="est-h">Un estudio de uñas en tu barrio</h2>
-        <p class="section-lead">Isla Studio es un espacio de uñas y cosmetología en San Martín de Porres, Lima.</p>
-        <p>Cada cita empieza por escucharte: la forma que te queda, el largo que llevas en tu día a día y el diseño que quieres lucir. Después preparamos la uña con cuidado para que el resultado se vea bonito y dure.</p>
-        <p class="place-name">San Martín de Porres<span>Lima, Perú</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CÓMO RESERVAR -->
-  <section class="section section--dark" id="reservar" aria-labelledby="res-h">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="res-h">Cómo reservar tu cita</h2>
-      </div>
-      <ol class="steps">
-        <li><span class="steps__n">1</span><h3>Escríbenos</h3><p>Mándanos un mensaje directo en Instagram a @islastudio.pe.</p></li>
-        <li><span class="steps__n">2</span><h3>Cuéntanos tu idea</h3><p>Envía una foto de referencia o dinos el servicio que quieres.</p></li>
-        <li><span class="steps__n">3</span><h3>Confirma día y hora</h3><p>Te respondemos con el precio, la duración y los horarios libres.</p></li>
-      </ol>
-      <div class="btn-row">
-        <a class="btn btn--light" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Escribir por Instagram <svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h8M5.5 2.5 9 6l-3.5 3.5"/></svg></a>
-        <!-- WHATSAPP: cuando el cliente confirme su número, añadir aquí:
-             <a class="btn btn--ghost-light" href="https://wa.me/51NUMERO?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita">Escribir por WhatsApp</a> -->
+      <div class="grid grid--top pair">
+        <a class="span-6" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><img src="img/nail-art-rosa-1000x620.jpg" srcset="img/nail-art-rosa-700x434.jpg 700w, img/nail-art-rosa-1000x620.jpg 1000w" sizes="(max-width: 639px) 92vw, 588px" alt="Uñas rosadas con flores estampadas en morado" width="1000" height="620" loading="lazy"></a>
+        <a class="span-6" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><img src="img/pedicure-francesa-1000x620.jpg" srcset="img/pedicure-francesa-700x434.jpg 700w, img/pedicure-francesa-1000x620.jpg 1000w" sizes="(max-width: 639px) 92vw, 588px" alt="Pedicure con francesa blanca" width="1000" height="620" loading="lazy"></a>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="footer" id="contacto" aria-labelledby="foot-h">
+<footer class="footer closing footer--visit" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <p class="footer__big" id="foot-h">Isla Studio</p>
-    <div class="footer__grid">
-      <div>
-        <h3>Dónde estamos</h3>
-        <address>San Martín de Porres, Lima</address>
-        <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=San+Mart%C3%ADn+de+Porres%2C+Lima" target="_blank" rel="noopener">Ver la zona</a>
-      </div>
-      <div>
-        <h3>Contacto</h3>
-        <a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Instagram @islastudio.pe</a>
-      </div>
-      <div>
-        <h3>Navegación</h3>
-        <ul>
-          <li><a class="link" href="#servicios">Servicios</a></li>
-          <li><a class="link" href="#trabajos">Diseños</a></li>
-          <li><a class="link" href="#reservar">Cómo reservar</a></li>
-        </ul>
-      </div>
+    <div class="closing__cta close--type">
+      <div class="section-head"><h2 id="close-h">Reserva tu cita por Instagram</h2><p class="t-lead">Escríbenos con tu idea o una foto y te confirmamos el día y la hora.</p></div>
+      <a class="btn btn--primary btn--xl" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar cita</a>
+      <!-- WhatsApp (cuando tengas el número): <a class="btn btn--secondary" href="https://wa.me/51NUMERO?text=Hola%20Isla%20Studio">Escribir por WhatsApp</a> -->
     </div>
-    <div class="footer__legal">
-      <span>&copy; 2026 Isla Studio</span>
-      <span class="credits">Fotos: Nunolupus, Theknowhau, Maëlyne.Nagel, E911a (CC BY-SA 4.0); Lelê Breveglieri, Heather Hutchinson (CC BY 2.0), vía Wikimedia Commons</span>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-4">
+          <address class="footer__address">San Martín de Porres, Lima</address>
+          <p><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=San+Mart%C3%ADn+de+Porres%2C+Lima" target="_blank" rel="noopener">Ver la zona</a></p>
+        </div>
+        <div class="span-6 start-7 stack-4">
+          <h3>Contacto</h3>
+          <p>Instagram: <a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">@islastudio.pe</a></p>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Isla Studio</span>
+        <a class="credits" href="creditos.html">Fotos vía Wikimedia Commons (CC BY-SA 4.0 y CC BY 2.0)</a>
+      </div>
     </div>
   </div>
 </footer>
-
 <nav class="actionbar" aria-label="Acciones rápidas">
-  <a class="btn btn--secondary" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Ver Instagram</a>
   <a class="btn btn--primary" href="https://ig.me/m/islastudio.pe" target="_blank" rel="noopener">Reservar cita</a>
 </nav>
-<script src="main.js" defer></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
 </body>
 </html>
