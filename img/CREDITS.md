@@ -14,3 +14,4 @@ Reemplazar por fotos reales de Isla Studio.
 | pedicure-francesa-*.jpg | https://commons.wikimedia.org/wiki/File:French_pedicure.jpg | Heather Hutchinson | CC BY 2.0 |
 
 Las imágenes fueron recortadas/redimensionadas (adaptadas).
+| base-natural-*.webp | https://commons.wikimedia.org/wiki/File:Base_coat_of_nail_polish.jpg | Espejop2319 | CC BY-SA 4.0 |
