@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es-PE">
 <head>
 <meta charset="utf-8">
@@ -16,11 +16,263 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1f1a17">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/manicure-gel-2000x900.jpg" media="(min-width: 701px)">
-<link rel="stylesheet" href="styles.css">
+<link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/v3/hero-m-800.webp" media="(max-width: 700px)">
+<link rel="preload" as="image" href="img/v3/hero-1920.webp" imagesrcset="img/v3/hero-1280.webp 1280w, img/v3/hero-1920.webp 1920w" imagesizes="100vw" media="(min-width: 701px)">
+<style>/* Isla Studio — hoja de estilos propia (sin framework) */
+/* Fuentes propias (sin bloquear la carga) */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/cormorant.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  /* ===== PALETA DE MARCA ISLA STUDIO =====
+     Cambia solo estas variables para aplicar los colores oficiales de la marca.
+     Ahora: marfil cálido, cacao y un terracota rosado (no se pudo leer el perfil de Instagram sin sesión). */
+  --brand-bg:#f6f1eb;        /* fondo principal */
+  --brand-surface:#ede4da;   /* fondo alterno */
+  --brand-ink:#241f1c;       /* texto */
+  --brand-muted:#5a5049;     /* texto secundario */
+  --brand-accent:#8a4f3d;    /* acento (enlaces, detalles) */
+  --brand-dark:#1f1a17;      /* secciones oscuras */
+  --brand-dark-ink:#f6f1eb;  /* texto sobre oscuro */
+  --brand-dark-muted:#bcb1a8;
+  /* ======================================= */
+  --bg:var(--brand-bg); --surface:var(--brand-surface); --ink:var(--brand-ink); --muted:var(--brand-muted); --line:rgba(36,31,28,.12);
+  --accent:var(--brand-accent); --accent-ink:#fff; --dark:var(--brand-dark); --dark-ink:var(--brand-dark-ink); --dark-muted:var(--brand-dark-muted);
+  --serif:"Cormorant Garamond", Georgia, serif; --sans:"Manrope", system-ui, sans-serif;
+  --wrap:1240px; --pad:clamp(20px,4vw,48px); --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(40px,5.2vw,72px)}
+h3{font-size:clamp(26px,2.4vw,32px)}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.eyebrow{font-size:14px;letter-spacing:.02em;color:var(--muted);margin-bottom:20px;display:flex;gap:12px;align-items:center}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.lead{font-size:clamp(18px,1.5vw,20px);color:var(--muted);max-width:52ch}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--bg);padding:12px 16px;z-index:100}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px;box-shadow:0 0 0 5px rgba(138,79,61,.35)}
+
+/* Botones: un solo estilo, cuadrado */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;font:500 16px/1 var(--sans);transition:background-color .2s var(--ease),color .2s var(--ease),transform .15s var(--ease)}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn:active{transform:scale(.98)}
+.btn--ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn--ghost:hover{background:currentColor;color:var(--bg)}
+.btn--light{background:var(--dark-ink);color:var(--dark);border-color:var(--dark-ink)}
+.btn--light:hover{background:transparent;color:var(--dark-ink)}
+.btn .arr{transition:transform .2s var(--ease)}
+.btn:hover .arr{transform:translateX(3px)}
+.link{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:2px;transition:background-size .3s var(--ease)}
+.link:hover{background-size:100% 1px}
+.link--u{background-size:100% 1px}
+
+/* Cabecera */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s;color:var(--dark-ink);border-bottom:1px solid transparent}
+.nav.is-solid{background:var(--bg);color:var(--ink);border-color:var(--line)}
+.nav__bar{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{font:500 28px/1 var(--serif);text-decoration:none;letter-spacing:.01em}
+.logo span{font:400 12px/1 var(--sans);letter-spacing:.12em;margin-left:8px;opacity:.8}
+.nav__links{display:flex;gap:32px;align-items:center;list-style:none;margin:0;padding:0}
+.nav__links a{text-decoration:none;font-size:15px}
+.nav .btn{min-height:44px;padding:0 20px;background:transparent;color:inherit;border-color:currentColor}
+.nav .btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.menu-btn{display:none;background:none;border:0;color:inherit;font:500 15px var(--sans);min-height:44px;padding:0 4px;cursor:pointer}
+@media (max-width:900px){
+  .nav__links{display:none}
+  .menu-btn{display:inline-flex;align-items:center}
+  .nav.is-open{background:var(--bg);color:var(--ink);height:100dvh}
+  .nav.is-open .nav__links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;position:absolute;top:76px;left:0;right:0;padding:24px var(--pad)}
+  .nav.is-open .nav__links a{font:500 34px/1.3 var(--serif)}
+  .nav.is-open .nav__links .btn{font:500 16px var(--sans);margin-top:16px}
+}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--dark-ink);background:var(--dark);overflow:hidden}
+.hero picture,.hero__img{position:absolute;inset:0;width:100%;height:100%}
+.hero__img{object-fit:cover;object-position:85% 50%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,14,.78) 0%,rgba(20,16,14,.45) 45%,rgba(20,16,14,.05) 75%),linear-gradient(180deg,rgba(20,16,14,.35) 0%,rgba(20,16,14,0) 30%,rgba(20,16,14,.5) 100%)}
+@media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(20,16,14,.35) 0%,rgba(20,16,14,.55) 45%,rgba(20,16,14,.85) 100%)}}
+.hero__in{position:relative;z-index:1;width:100%;padding-block:0 clamp(48px,8vh,96px)}
+.hero h1{font-size:clamp(52px,8.4vw,128px);max-width:11ch;line-height:.95}
+.hero .lead{color:rgba(245,240,234,.85);margin-top:24px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero .btn--ghost:hover{color:var(--dark)}
+.hero__meta{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:48px;padding-top:20px;border-top:1px solid rgba(245,240,234,.25);font-size:14px;color:rgba(245,240,234,.8)}
+/* Entrada única al cargar; si no hay animaciones, todo queda visible */
+@keyframes rise{from{transform:translateY(22px)}to{transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes settle{from{transform:scale(1.06)}to{transform:scale(1)}}
+.hero__img{animation:settle 1.6s var(--ease) both}
+.hero__in>*{animation:rise .9s var(--ease) both}
+.hero__in>:not(h1){animation:rise .9s var(--ease) both,fade .9s var(--ease) both}
+.hero__in>*:nth-child(2){animation-delay:.08s}.hero__in>*:nth-child(3){animation-delay:.16s}.hero__in>*:nth-child(4){animation-delay:.24s}.hero__in>*:nth-child(5){animation-delay:.32s}
+
+/* Secciones */
+.sec{padding-block:clamp(88px,12vw,160px)}
+.sec--surface{background:var(--surface)}
+.sec--dark{background:var(--dark);color:var(--dark-ink)}
+.sec--dark .lead,.sec--dark .eyebrow{color:var(--dark-muted)}
+.head{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:clamp(48px,6vw,80px)}
+
+
+/* Intro / estudio */
+.intro{display:grid;gap:48px;align-items:center}
+
+.intro__txt p+p{margin-top:16px}
+.facts{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
+.facts span:last-child{color:var(--muted);text-align:right}
+.frame{overflow:hidden;background:var(--surface)}
+.frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+a.frame:hover img,.frame:hover img{transform:scale(1.03)}
+.intro .frame{aspect-ratio:4/5}
+
+/* Carta de servicios */
+.menu{display:grid;gap:clamp(56px,7vw,96px)}
+.cat{display:grid;gap:32px}
+
+.cat__side .frame{aspect-ratio:1/1;margin-top:24px}
+.cat__side p{color:var(--muted);margin-top:12px;max-width:36ch}
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row__n{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row__name{font:500 26px/1.15 var(--serif)}
+.row__desc{grid-column:1/2;color:var(--muted);font-size:16px;max-width:52ch}
+.row__price{font-size:15px;color:var(--muted);white-space:nowrap}
+.row__book{grid-column:1/3;font-size:15px;justify-self:start;margin-top:4px;color:var(--accent);min-height:24px}
+@media (max-width:560px){.row{grid-template-columns:1fr}.row__price{grid-column:1/2;grid-row:2}.row__desc,.row__book{grid-column:1/2}}
+.note{margin-top:32px;font-size:15px;color:var(--muted)}
+
+/* Pasos para reservar */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+@media (min-width:900px){.steps{grid-template-columns:repeat(3,1fr)}}
+.steps li{padding:32px 32px 32px 0;border-top:1px solid rgba(245,240,234,.2)}
+@media (min-width:900px){.steps li+li{padding-left:32px;border-left:1px solid rgba(245,240,234,.2)}}
+.steps li::before{counter-increment:s;content:"0" counter(s);display:block;font:400 64px/1 var(--serif);color:var(--dark-muted);margin-bottom:24px}
+.steps h3{margin-bottom:12px}
+.steps p{color:var(--dark-muted)}
+.steps__cta{margin-top:56px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* Galería tipo lookbook */
+.look{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.look a{grid-column:span 6}
+.look a:nth-child(1){grid-column:span 7;grid-row:span 2}
+.look a:nth-child(2),.look a:nth-child(3){grid-column:span 5}
+.look a:nth-child(4),.look a:nth-child(5){grid-column:span 6}
+.look .frame{display:block;height:100%}
+.look a:nth-child(1) img{aspect-ratio:4/5}
+.look a:nth-child(2) img,.look a:nth-child(3) img{aspect-ratio:16/10}
+.look a:nth-child(n+4) img{aspect-ratio:16/10}
+@media (max-width:700px){.look a,.look a:nth-child(n){grid-column:span 6;grid-row:auto}.look a:nth-child(1){grid-column:span 12}}
+
+/* Antes de tu cita + opiniones */
+.two{display:grid;gap:56px}
+
+.tips{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tips li{padding:20px 0 20px 28px;border-bottom:1px solid var(--line);position:relative}
+.tips li::before{content:"";position:absolute;left:0;top:33px;width:12px;height:1px;background:var(--accent)}
+.tips li span{color:var(--accent);font-variant-numeric:tabular-nums;font-size:14px;padding-top:3px}
+.quote{border:1px solid var(--line);padding:clamp(28px,4vw,48px);display:grid;gap:20px;align-content:start;background:var(--bg)}
+.quote p{color:var(--muted)}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line);max-width:880px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font:500 24px/1.25 var(--serif);min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 28px/1 var(--sans);transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 24px;color:var(--muted);max-width:64ch}
+
+/* Ubicación */
+.visit{display:grid;gap:48px}
+
+.visit__big{font:500 clamp(44px,6vw,88px)/1 var(--serif)}
+.visit dl{margin:40px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.visit dl div{display:grid;grid-template-columns:120px 1fr;padding:16px 0;border-bottom:1px solid var(--line)}
+.visit dt{color:var(--muted);font-size:15px}
+.visit dd{margin:0}
+.map{min-height:420px;background:var(--surface);border:0;width:100%;height:100%;filter:grayscale(.85) contrast(.95)}
+
+/* Cierre y pie */
+.close{text-align:left}
+.close h2{font-size:clamp(48px,7vw,104px);max-width:12ch}
+.close .lead{margin-top:24px}
+.close__cta{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+.foot{border-top:1px solid rgba(245,240,234,.15);margin-top:clamp(80px,10vw,120px);padding-top:32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--dark-muted)}
+.foot nav{display:flex;gap:24px;flex-wrap:wrap}
+.foot a{text-decoration:none;min-height:24px;display:inline-block}
+
+/* Barra fija en el celular */
+.bar{display:none}
+@media (max-width:700px){
+  .bar{display:grid;grid-template-columns:1fr 48px 48px;gap:8px;position:fixed;inset:auto 0 0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line)}
+  .bar .btn{min-height:48px;padding:0 12px}
+  body{padding-bottom:72px}
+  .hero__cta .btn{flex:1 1 100%}
+}
+
+
+/* Clases que reemplazan estilos en línea */
+.eyebrow--light{color:rgba(246,241,235,.82)}
+.intro .lead{margin-top:24px}
+.tips{margin-top:40px}
+.visit__more{margin-top:24px}
+.row__price{font-variant-numeric:tabular-nums}
+
+/* Redes: tarjetas */
+.social{display:grid;gap:12px;margin-top:32px}
+.social a{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--line);background:var(--bg);text-decoration:none;transition:transform .2s var(--ease),border-color .2s var(--ease)}
+.social a:hover{transform:translateY(-2px);border-color:var(--ink)}
+.social b{display:block;font:500 22px/1.2 var(--serif)}
+.social small{display:block;color:var(--muted);font-size:14px}
+.social .go{color:var(--muted);transition:transform .2s var(--ease)}
+.social a:hover .go{transform:translateX(3px);color:var(--ink)}
+.ico{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;color:#fff}
+.ico svg{width:24px;height:24px}
+.ico--wa{background:#25D366}.ico--ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}.ico--tt{background:#000}
+
+/* Botones flotantes (WhatsApp, Instagram, TikTok) */
+.float{position:fixed;right:24px;bottom:24px;z-index:45;display:grid;gap:10px;justify-items:center}
+.float a{display:grid;place-items:center;border-radius:50%;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.16);transition:transform .2s var(--ease)}
+.float a:hover{transform:translateY(-2px)}.float a:active{transform:scale(.95)}
+.float .f-sm{width:44px;height:44px}.float .f-sm svg{width:20px;height:20px}
+.float .f-wa{width:60px;height:60px;background:#25D366}.float .f-wa svg{width:30px;height:30px}
+.float .f-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}.float .f-tt{background:#000}
+@media (max-width:700px){.float{display:none}}
+
+/* Barra móvil */
+
+.bar .btn:first-child{background:#146234;border-color:#146234;color:#fff}
+.bar .b-ico{padding:0;min-height:48px;width:48px;background:transparent;color:var(--ink);border-color:var(--line)}
+.bar .b-ico svg{width:22px;height:22px}
+
+.cat--pair{grid-template-columns:1fr}
+
+.cat__sub{color:var(--muted);margin:12px 0 24px;max-width:40ch}
+/* Áreas táctiles de 44px en el celular */
+@media (max-width:900px){
+  .row__book,.visit dd a,.visit__more a,.foot a,.logo,.lead .link{display:inline-flex;align-items:center;min-height:44px}
+  .foot nav{gap:8px 24px}
+}
+
+/* Una sola retícula: todas las divisiones caen en la misma línea (5/7) */
+@media (min-width:900px){
+  .head--split,.intro,.cat,.two,.visit,.cat--pair{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:80px}
+  .head--split{align-items:end}.cat{align-items:start}.visit{align-items:stretch}
+}
+.lead{color:#4a413b}.sec--dark .lead{color:var(--dark-muted)}.hero .lead{color:rgba(246,241,235,.9)}
+.visit__more a{color:var(--ink)}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,11 +280,12 @@
   "name": "Isla Studio",
   "url": "https://islaestudioperu.com/",
   "description": "Estudio de uñas y cosmetología en San Martín de Porres, Lima.",
-  "image": "https://islaestudioperu.com/img/manicure-gel-2000x900.jpg",
+  "image": "https://islaestudioperu.com/img/manicure-gel-1200x630.jpg",
+  "logo": "https://islaestudioperu.com/favicon.svg",
   "telephone": "+51963281858",
   "address": { "@type": "PostalAddress", "addressLocality": "San Martín de Porres", "addressRegion": "Lima", "addressCountry": "PE" },
   "areaServed": ["San Martín de Porres", "Los Olivos", "Lima Norte"],
-  "sameAs": ["https://www.instagram.com/islastudio.pe/", "https://wa.me/51963281858"],
+  "sameAs": ["https://www.instagram.com/islastudio.pe/", "https://www.tiktok.com/@islastudio.pe"],
   "potentialAction": { "@type": "ReserveAction", "target": "https://wa.me/51963281858" }
 }
 </script>
@@ -52,7 +305,7 @@
       <li><a class="link" href="#trabajos">Trabajos</a></li>
       <li><a class="link" href="#preguntas">Preguntas</a></li>
       <li><a class="link" href="#visitanos">Ubicación</a></li>
-      <li><a class="btn" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar cita</a></li>
+      <li><a class="btn" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar por WhatsApp</a></li>
     </ul>
   </div>
 </header>
@@ -60,11 +313,11 @@
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-h">
     <picture>
-      <source media="(max-width: 700px)" srcset="img/manicure-gel-800x900.jpg">
-      <img class="hero__img" src="img/manicure-gel-2000x900.jpg" srcset="img/manicure-gel-1400x700.jpg 1400w, img/manicure-gel-2000x900.jpg 2000w" sizes="100vw" width="2000" height="900" alt="Uñas largas en punta con francesa negra y diseño a mano" fetchpriority="high">
+      <source media="(max-width: 700px)" srcset="img/v3/hero-m-800.webp" width="800" height="900">
+      <img class="hero__img" src="img/v3/hero-1920.webp" srcset="img/v3/hero-1280.webp 1280w, img/v3/hero-1920.webp 1920w" sizes="100vw" width="1920" height="864" alt="Uñas largas en punta con francesa negra y diseño a mano" fetchpriority="high">
     </picture>
     <div class="wrap hero__in">
-      <p class="eyebrow" style="color:rgba(245,240,234,.8)">Uñas y cosmetología · San Martín de Porres</p>
+      <p class="eyebrow eyebrow--light">Uñas y cosmetología · San Martín de Porres</p>
       <h1 id="hero-h">Tus uñas, a tu manera, en Lima Norte</h1>
       <p class="lead">Manicure, gel, acrílicas, nail art y pedicure en San Martín de Porres. Nos mandas tu idea por WhatsApp y te separamos el turno.</p>
       <div class="hero__cta">
@@ -78,9 +331,8 @@
   <section class="sec" id="estudio" aria-labelledby="estudio-h">
     <div class="wrap intro">
       <div class="intro__txt">
-        <p class="eyebrow">El estudio</p>
         <h2 id="estudio-h">Un estudio pequeño, una clienta a la vez</h2>
-        <p class="lead" style="margin-top:24px">Antes de empezar miramos tu uña natural y la foto que trajiste. Con eso elegimos la técnica y el largo que te van a durar.</p>
+        <p class="lead">Antes de empezar miramos tu uña natural y la foto que trajiste. Con eso elegimos la técnica y el largo que te van a durar.</p>
         <!-- TODO: aquí va la historia real de Isla Studio (quién atiende, desde cuándo, qué la hace distinta). -->
         <ul class="facts">
           <li><span>Distrito</span><span>San Martín de Porres</span></li>
@@ -88,82 +340,72 @@
           <li><span>Especialidad</span><span>Uñas y cosmetología</span></li>
         </ul>
       </div>
-      <div class="frame"><img src="img/francesa-glitter-900x1125.jpg" srcset="img/francesa-glitter-600x750.jpg 600w, img/francesa-glitter-900x1125.jpg 900w" sizes="(max-width: 899px) 92vw, 560px" width="900" height="1125" alt="Manicure francesa con glitter en un dedo" loading="lazy"></div>
+      <div class="frame"><img src="img/v3/francesa-900.webp" srcset="img/v3/francesa-600.webp 600w, img/v3/francesa-900.webp 900w" sizes="(max-width: 899px) 92vw, 560px" width="900" height="1125" alt="Manicure francesa con glitter en un dedo" loading="lazy"></div>
     </div>
   </section>
 
   <section class="sec sec--surface" id="servicios" aria-labelledby="serv-h">
     <div class="wrap">
       <div class="head head--split">
-        <div><p class="eyebrow">Carta de servicios</p><h2 id="serv-h">Servicios de uñas y cuidado</h2></div>
+        <div><h2 id="serv-h">Servicios de uñas y cuidado</h2></div>
         <p class="lead">Cada precio depende del largo y del diseño. Mándanos una foto y te pasamos el precio y el tiempo antes de reservar.</p>
       </div>
       <div class="menu">
         <div class="cat">
-          <div class="cat__side"><h3>Manos</h3><p>Desde un esmaltado sencillo hasta extensiones con diseño.</p>
-            <div class="frame"><img src="img/tips-unas-900x1125.jpg" srcset="img/tips-unas-600x750.jpg 600w, img/tips-unas-900x1125.jpg 900w" sizes="(max-width: 899px) 92vw, 380px" width="900" height="1125" alt="Tips de uñas listos para extensión" loading="lazy"></div></div>
+          <div class="cat__side"><h3>Uñas de manos</h3><p>Desde un esmaltado sencillo hasta extensiones con diseño.</p>
+            <div class="frame"><img src="img/v3/tips-760.webp" srcset="img/v3/tips-500.webp 500w, img/v3/tips-760.webp 760w" sizes="(max-width: 899px) 92vw, 380px" width="760" height="950" alt="Tips de uñas listos para extensión" loading="lazy"></div></div>
           <ul class="rows">
         <li class="row">
-          <span class="row__n">01</span>
-          <h3 class="row__name">Manicure</h3>
+          <h4 class="row__name">Manicure</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">Limpieza, forma, cutícula y esmalte clásico</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20Manicure" target="_blank" rel="noopener">Reservar manicure</a>
         </li>
         <li class="row">
-          <span class="row__n">02</span>
-          <h3 class="row__name">Uñas en gel</h3>
+          <h4 class="row__name">Uñas en gel</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">Esmaltado semipermanente que dura más que el esmalte común</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20U%C3%B1as%20en%20gel" target="_blank" rel="noopener">Reservar uñas en gel</a>
         </li>
         <li class="row">
-          <span class="row__n">03</span>
-          <h3 class="row__name">Uñas acrílicas</h3>
+          <h4 class="row__name">Uñas acrílicas</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">Extensión con el largo y la forma que elijas</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20U%C3%B1as%20acr%C3%ADlicas" target="_blank" rel="noopener">Reservar uñas acrílicas</a>
         </li>
         <li class="row">
-          <span class="row__n">04</span>
-          <h3 class="row__name">Nail art</h3>
+          <h4 class="row__name">Nail art</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">Francesa, dibujo a mano, glitter o piedras sobre tu diseño</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20Nail%20art" target="_blank" rel="noopener">Reservar nail art</a>
         </li>
           </ul>
         </div>
-        <div class="cat">
-          <div class="cat__side"><h3>Pies</h3><p>Pedicure clásico o con gel, con el mismo cuidado que las manos.</p>
-            <div class="frame"><img src="img/pedicure-francesa-1000x620.jpg" srcset="img/pedicure-francesa-700x434.jpg 700w, img/pedicure-francesa-1000x620.jpg 1000w" sizes="(max-width: 899px) 92vw, 380px" width="1000" height="620" alt="Pedicure con francesa blanca" loading="lazy" style="aspect-ratio:4/3"></div></div>
-          <ul class="rows">
+        <div class="cat cat--pair">
+          <div><h3>Cuidado de pies</h3><p class="cat__sub">Pedicure clásico o con gel, con el mismo cuidado que las manos.</p>
+            <ul class="rows">
         <li class="row">
-          <span class="row__n">05</span>
-          <h3 class="row__name">Pedicure</h3>
+          <h4 class="row__name">Pedicure</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">Limpieza, cutícula y esmalte clásico</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20Pedicure" target="_blank" rel="noopener">Reservar pedicure</a>
         </li>
         <li class="row">
-          <span class="row__n">06</span>
-          <h3 class="row__name">Pedicure en gel</h3>
+          <h4 class="row__name">Pedicure en gel</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">El mismo cuidado con esmaltado semipermanente</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20Pedicure%20en%20gel" target="_blank" rel="noopener">Reservar pedicure en gel</a>
         </li>
-          </ul>
-        </div>
-        <div class="cat">
-          <div class="cat__side"><h3>Cosmetología</h3><p>Cuidado de la piel en el mismo estudio.</p></div>
-          <ul class="rows">
+            </ul></div>
+          <div><h3>Cuidado de la piel</h3><p class="cat__sub">Cuidado de la piel en el mismo estudio.</p>
+            <ul class="rows">
         <li class="row">
-          <span class="row__n">07</span>
-          <h3 class="row__name">Cosmetología</h3>
+          <h4 class="row__name">Cosmetología</h4>
           <span class="row__price"><!-- TODO precio real: "desde S/ __" -->Precio por mensaje</span>
           <p class="row__desc">Tratamientos para el cuidado de la piel. Pregúntanos cuáles hacemos y para qué tipo de piel</p>
           <a class="row__book link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%3A%20Cosmetolog%C3%ADa" target="_blank" rel="noopener">Reservar cosmetología</a>
         </li>
-          </ul>
+            </ul></div>
         </div>
       </div>
       <!-- TODO: reemplazar "Precio por mensaje" por precios reales ("desde S/ __") y añadir la duración de cada servicio. -->
@@ -173,7 +415,7 @@
   <section class="sec sec--dark" id="reservar" aria-labelledby="res-h">
     <div class="wrap">
       <div class="head head--split">
-        <div><p class="eyebrow">Cómo reservar</p><h2 id="res-h">Tu cita en tres mensajes</h2></div>
+        <div><h2 id="res-h">Tu cita en tres mensajes</h2></div>
         <p class="lead">Todo se coordina por WhatsApp, sin formularios ni apps.</p>
       </div>
       <ol class="steps">
@@ -182,22 +424,22 @@
         <li><h3>Ven al estudio</h3><p>Te confirmamos la cita y la dirección exacta en San Martín de Porres.</p></li>
       </ol>
       <!-- TODO: si piden adelanto para separar el turno, agregarlo aquí con el monto real. -->
-      <div class="steps__cta"><a class="btn btn--light" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Escribir por WhatsApp</a></div>
+      <div class="steps__cta"><a class="btn btn--light" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar por WhatsApp</a></div>
     </div>
   </section>
 
   <section class="sec" id="trabajos" aria-labelledby="trab-h">
     <div class="wrap">
       <div class="head head--split">
-        <div><p class="eyebrow">Lookbook</p><h2 id="trab-h">Ideas para tu próximo diseño</h2></div>
+        <div><h2 id="trab-h">Ideas para tu próximo diseño</h2></div>
         <p class="lead">Guarda la que te guste y mándanosla. Más trabajos en <a class="link link--u" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">@islastudio.pe</a></p>
       </div>
       <div class="look">
-        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas con piedras en Instagram"><img src="img/unas-piedras-800x1066.jpg" srcset="img/unas-piedras-600x800.jpg 600w, img/unas-piedras-800x1066.jpg 800w" sizes="(max-width: 700px) 92vw, 680px" width="800" height="1066" alt="Uñas con piedras y brillo" loading="lazy"></a>
-        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver nail art de flores en Instagram"><img src="img/nail-art-rosa-1000x620.jpg" srcset="img/nail-art-rosa-700x434.jpg 700w, img/nail-art-rosa-1000x620.jpg 1000w" sizes="(max-width: 700px) 46vw, 480px" width="1000" height="620" alt="Uñas rosadas con flores pintadas" loading="lazy"></a>
-        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas stiletto en Instagram"><img src="img/stiletto-dorado-800x800.jpg" srcset="img/stiletto-dorado-360x360.jpg 360w, img/stiletto-dorado-800x800.jpg 800w" sizes="(max-width: 700px) 46vw, 480px" width="800" height="800" alt="Uñas stiletto con dorado" loading="lazy"></a>
-        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas con rayas en Instagram"><img src="img/rayas-glitter-800x800.jpg" srcset="img/rayas-glitter-360x360.jpg 360w, img/rayas-glitter-800x800.jpg 800w" sizes="(max-width: 700px) 46vw, 390px" width="800" height="800" alt="Uñas con rayas y glitter" loading="lazy"></a>
-        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas naturales en Instagram"><img src="img/base-natural-960.webp" srcset="img/base-natural-500.webp 500w, img/base-natural-960.webp 960w" sizes="(max-width: 700px) 46vw, 390px" width="960" height="722" alt="Uñas naturales con base transparente" loading="lazy"></a>
+        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas con piedras en Instagram"><img src="img/v3/piedras-800.webp" srcset="img/v3/piedras-500.webp 500w, img/v3/piedras-800.webp 800w" sizes="(max-width: 700px) 92vw, 680px" width="800" height="1066" alt="Uñas con piedras y brillo" loading="lazy"></a>
+        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver nail art de flores en Instagram"><img src="img/v3/flores-1000.webp" srcset="img/v3/flores-600.webp 600w, img/v3/flores-1000.webp 1000w" sizes="(max-width: 700px) 46vw, 480px" width="1000" height="620" alt="Uñas rosadas con flores pintadas" loading="lazy"></a>
+        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas stiletto en Instagram"><img src="img/v3/stiletto-800.webp" srcset="img/v3/stiletto-500.webp 500w, img/v3/stiletto-800.webp 800w" sizes="(max-width: 700px) 46vw, 480px" width="800" height="800" alt="Uñas stiletto con dorado" loading="lazy"></a>
+        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas con rayas en Instagram"><img src="img/v3/rayas-800.webp" srcset="img/v3/rayas-500.webp 500w, img/v3/rayas-800.webp 800w" sizes="(max-width: 700px) 46vw, 590px" width="800" height="600" alt="Uñas con rayas y glitter" loading="lazy"></a>
+        <a class="frame" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Ver uñas naturales en Instagram"><img src="img/v3/natural-960.webp" srcset="img/v3/natural-500.webp 500w, img/v3/natural-960.webp 960w" sizes="(max-width: 700px) 46vw, 590px" width="960" height="720" alt="Uñas naturales con base transparente" loading="lazy"></a>
       </div>
     </div>
   </section>
@@ -205,28 +447,29 @@
   <section class="sec sec--surface" id="antes" aria-labelledby="antes-h">
     <div class="wrap two">
       <div>
-        <p class="eyebrow">Antes de tu cita</p>
         <h2 id="antes-h">Cuatro cosas que ayudan</h2>
-        <ul class="tips" style="margin-top:40px">
-          <li><span>01</span><p>Trae o manda una foto del diseño que te gusta. Así calculamos bien el tiempo.</p></li>
-          <li><span>02</span><p>Avísanos si vienes con gel o acrílico puesto, para considerar el retiro.</p></li>
-          <li><span>03</span><p>Cuéntanos si tienes alguna uña rota o sensible.</p></li>
-          <li><span>04</span><p>Si no llegas a tu cita, escríbenos con tiempo y la movemos.</p></li>
+        <ul class="tips">
+          <li><p>Trae o manda una foto del diseño que te gusta. Así calculamos bien el tiempo.</p></li>
+          <li><p>Avísanos si vienes con gel o acrílico puesto, para considerar el retiro.</p></li>
+          <li><p>Cuéntanos si tienes alguna uña rota o sensible.</p></li>
+          <li><p>Si no llegas a tu cita, escríbenos con tiempo y la movemos.</p></li>
         </ul>
       </div>
-      <div class="quote" id="opiniones">
-        <p class="eyebrow">Opiniones</p>
-        <h3>Lo que dicen nuestras clientas</h3>
-        <!-- TODO: pegar aquí 3 reseñas reales (nombre de pila + texto) de Google Maps o Instagram, con permiso. No inventar. -->
-        <p>Las reseñas y los trabajos de cada semana están en nuestro Instagram.</p>
-        <a class="link link--u" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Ver @islastudio.pe</a>
+      <div class="quote" id="redes">
+        <h3>Mira los trabajos de cada semana</h3>
+        <p>Publicamos diseños nuevos, antes y después, y los turnos que se liberan.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener"><span class="ico ico--ig"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 9.8 2.7 10.2 2.7 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2Zm6.2-8.2a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0Z"/></svg></span><span><b>Instagram</b><small>@islastudio.pe</small></span><span class="go" aria-hidden="true">→</span></a>
+          <a href="https://www.tiktok.com/@islastudio.pe" target="_blank" rel="noopener"><span class="ico ico--tt"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8.1 8.1 0 0 0 4.7 1.5V6.7a4.8 4.8 0 0 1-4.7-4.7Z"/></svg></span><span><b>TikTok</b><small>Videos de los diseños</small></span><span class="go" aria-hidden="true">→</span></a>
+          <a href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><span class="ico ico--wa"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg></span><span><b>WhatsApp</b><small>+51 963 281 858</small></span><span class="go" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="sec" id="preguntas" aria-labelledby="faq-h">
     <div class="wrap">
-      <div class="head"><p class="eyebrow">Preguntas frecuentes</p><h2 id="faq-h">Dudas antes de reservar</h2></div>
+      <div class="head"><h2 id="faq-h">Dudas antes de reservar</h2></div>
       <div class="faq">
         <details><summary>¿Cómo reservo una cita?</summary><p>Por WhatsApp al +51 963 281 858. Nos dices el servicio y te pasamos los horarios libres.</p></details>
         <details><summary>¿Cuánto cuesta un diseño?</summary><p>Depende del largo, la técnica y el detalle. Mándanos una foto de referencia y te damos el precio antes de reservar.</p></details>
@@ -241,7 +484,6 @@
   <section class="sec sec--surface" id="visitanos" aria-labelledby="vis-h">
     <div class="wrap visit">
       <div>
-        <p class="eyebrow">Ubicación</p>
         <h2 id="vis-h" class="visit__big">San Martín de Porres</h2>
         <dl>
           <div><dt>Zona</dt><dd>San Martín de Porres, Lima<!-- TODO: calle o referencia --></dd></div>
@@ -249,7 +491,7 @@
           <div><dt>WhatsApp</dt><dd><a class="link link--u" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener">+51 963 281 858</a></dd></div>
           <div><dt>Instagram</dt><dd><a class="link link--u" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">@islastudio.pe</a></dd></div>
         </dl>
-        <p style="margin-top:24px"><a class="link link--u" href="https://www.google.com/maps/search/?api=1&amp;query=San+Mart%C3%ADn+de+Porres%2C+Lima" target="_blank" rel="noopener">Ver la zona en Google Maps</a></p>
+        <p class="visit__more"><a class="link link--u" href="https://www.google.com/maps/search/?api=1&amp;query=San+Mart%C3%ADn+de+Porres%2C+Lima" target="_blank" rel="noopener">Ver la zona en Google Maps</a></p>
       </div>
       <iframe class="map" title="Mapa de San Martín de Porres, Lima" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=San+Mart%C3%ADn+de+Porres,+Lima,+Peru&amp;z=13&amp;output=embed"></iframe>
     </div>
@@ -258,24 +500,28 @@
 
 <footer class="sec sec--dark" aria-labelledby="close-h">
   <div class="wrap close">
-    <p class="eyebrow">Reservas</p>
     <h2 id="close-h">Separa tu turno por WhatsApp</h2>
     <p class="lead">Cuéntanos qué te quieres hacer y te respondemos con día, hora y precio.</p>
     <div class="close__cta">
-      <a class="btn btn--light" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar cita</a>
+      <a class="btn btn--light" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar por WhatsApp</a>
       <a class="btn btn--ghost" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Seguir en Instagram</a>
     </div>
     <div class="foot">
       <span>&copy; 2026 Isla Studio · San Martín de Porres, Lima · +51 963 281 858</span>
-      <nav aria-label="Pie de página"><a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Instagram</a><a class="link" href="creditos.html">Créditos de fotos (Wikimedia Commons)</a></nav>
+      <nav aria-label="Pie de página"><a class="link" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener">Instagram</a><a class="link" href="https://www.tiktok.com/@islastudio.pe" target="_blank" rel="noopener">TikTok</a><a class="link" href="creditos.html">Créditos de fotos (Wikimedia Commons)</a></nav>
     </div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener" aria-label="Reservar por WhatsApp"><svg class="wa-ic" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg></a>
+<div class="float">
+  <a class="f-sm f-tt" href="https://www.tiktok.com/@islastudio.pe" target="_blank" rel="noopener" aria-label="Isla Studio en TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8.1 8.1 0 0 0 4.7 1.5V6.7a4.8 4.8 0 0 1-4.7-4.7Z"/></svg></a>
+  <a class="f-sm f-ig" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Isla Studio en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 9.8 2.7 10.2 2.7 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2Zm6.2-8.2a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0Z"/></svg></a>
+  <a class="f-wa" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener" aria-label="Reservar por WhatsApp"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg></a>
+</div>
 <nav class="bar" aria-label="Reserva rápida">
   <a class="btn" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>WhatsApp</a>
-  <a class="btn btn--ghost" href="#servicios">Servicios</a>
+  <a class="btn b-ico" href="https://www.instagram.com/islastudio.pe/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 9.8 2.7 10.2 2.7 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2Zm6.2-8.2a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0Z"/></svg></a>
+  <a class="btn b-ico" href="https://www.tiktok.com/@islastudio.pe" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8.1 8.1 0 0 0 4.7 1.5V6.7a4.8 4.8 0 0 1-4.7-4.7Z"/></svg></a>
 </nav>
 <script>
 (function(){var n=document.getElementById('nav'),b=n.querySelector('.menu-btn');
