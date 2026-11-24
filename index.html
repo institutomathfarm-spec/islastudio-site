@@ -59,7 +59,7 @@ p{margin:0}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
 .eyebrow{font-size:14px;letter-spacing:.02em;color:var(--muted);margin-bottom:20px;display:flex;gap:12px;align-items:center}
 .eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
-.lead{font-size:clamp(18px,1.5vw,20px);color:var(--muted);max-width:52ch}
+.lead{font-size:clamp(18px,1.5vw,20px);color:var(--muted);max-width:31em}
 .skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--bg);padding:12px 16px;z-index:100}
 .skip:focus{top:12px}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px;box-shadow:0 0 0 5px rgba(138,79,61,.35)}
@@ -105,7 +105,7 @@ p{margin:0}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,14,.78) 0%,rgba(20,16,14,.45) 45%,rgba(20,16,14,.05) 75%),linear-gradient(180deg,rgba(20,16,14,.35) 0%,rgba(20,16,14,0) 30%,rgba(20,16,14,.5) 100%)}
 @media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(20,16,14,.35) 0%,rgba(20,16,14,.55) 45%,rgba(20,16,14,.85) 100%)}}
 .hero__in{position:relative;z-index:1;width:100%;padding-block:0 clamp(48px,8vh,96px)}
-.hero h1{font-size:clamp(52px,8.4vw,128px);max-width:11ch;line-height:.95}
+.hero h1{font-size:clamp(52px,8.4vw,128px);max-width:none;line-height:.95}
 .hero .lead{color:rgba(245,240,234,.85);margin-top:24px}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
 .hero .btn--ghost:hover{color:var(--dark)}
@@ -145,12 +145,12 @@ a.frame:hover img,.frame:hover img{transform:scale(1.03)}
 .cat{display:grid;gap:32px}
 
 .cat__side .frame{aspect-ratio:1/1;margin-top:24px}
-.cat__side p{color:var(--muted);margin-top:12px;max-width:36ch}
+.cat__side p{color:var(--muted);margin-top:12px;max-width:21em}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .row{display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .row__n{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 .row__name{font:500 26px/1.15 var(--serif)}
-.row__desc{grid-column:1/2;color:var(--muted);font-size:16px;max-width:52ch}
+.row__desc{grid-column:1/2;color:var(--muted);font-size:16px;max-width:31em}
 .row__price{font-size:15px;color:var(--muted);white-space:nowrap}
 .row__book{grid-column:1/3;font-size:15px;justify-self:start;margin-top:4px;color:var(--accent);min-height:24px}
 @media (max-width:560px){.row{grid-template-columns:1fr}.row__price{grid-column:1/2;grid-row:2}.row__desc,.row__book{grid-column:1/2}}
@@ -195,7 +195,7 @@ a.frame:hover img,.frame:hover img{transform:scale(1.03)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font:300 28px/1 var(--sans);transition:transform .25s var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{padding:0 0 24px;color:var(--muted);max-width:64ch}
+.faq details p{padding:0 0 24px;color:var(--muted);max-width:38em}
 
 /* Ubicación */
 .visit{display:grid;gap:48px}
@@ -209,7 +209,7 @@ a.frame:hover img,.frame:hover img{transform:scale(1.03)}
 
 /* Cierre y pie */
 .close{text-align:left}
-.close h2{font-size:clamp(48px,7vw,104px);max-width:12ch}
+.close h2{font-size:clamp(48px,7vw,104px);max-width:6em}
 .close .lead{margin-top:24px}
 .close__cta{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
 .foot{border-top:1px solid rgba(245,240,234,.15);margin-top:clamp(80px,10vw,120px);padding-top:32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--dark-muted)}
@@ -262,7 +262,7 @@ a.frame:hover img,.frame:hover img{transform:scale(1.03)}
 
 .cat--pair{grid-template-columns:1fr}
 
-.cat__sub{color:var(--muted);margin:12px 0 24px;max-width:40ch}
+.cat__sub{color:var(--muted);margin:12px 0 24px;max-width:24em}
 /* Áreas táctiles de 44px en el celular */
 @media (max-width:900px){
   .row__book,.visit dd a,.visit__more a,.foot a,.logo,.lead .link{display:inline-flex;align-items:center;min-height:44px}
@@ -372,7 +372,7 @@ html.js .rv-img.in:hover img{transform:scale(1.04)}
     </picture>
     <div class="wrap hero__in">
       <p class="eyebrow eyebrow--light">Uñas y cosmetología · San Martín de Porres</p>
-      <h1 id="hero-h"><span class="w"><span data-i="0">Tus</span></span> <span class="w"><span data-i="1">uñas,</span></span> <span class="w"><span data-i="2">a</span></span> <span class="w"><span data-i="3">tu</span></span> <span class="w"><span data-i="4">manera,</span></span> <span class="w"><span data-i="5">en</span></span> <span class="w"><span data-i="6">Lima</span></span> <span class="w"><span data-i="7">Norte</span></span></h1>
+      <h1 id="hero-h"><span class="w"><span data-i="0">Tus</span></span> <span class="w"><span data-i="1">uñas,</span></span> <span class="w"><span data-i="2">a</span></span> <span class="w"><span data-i="3">tu</span></span><br><span class="w"><span data-i="4">manera,</span></span> <span class="w"><span data-i="5">en</span></span><br><span class="w"><span data-i="6">Lima</span></span> <span class="w"><span data-i="7">Norte</span></span></h1>
       <p class="lead">Manicure, gel, acrílicas, nail art y pedicure en San Martín de Porres. Nos mandas tu idea por WhatsApp y te separamos el turno.</p>
       <div class="hero__cta">
         <a class="btn btn--light" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar por WhatsApp</a>
