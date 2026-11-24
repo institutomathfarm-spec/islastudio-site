@@ -89,7 +89,8 @@ p{margin:0}
 @keyframes rise{from{transform:translateY(22px)}to{transform:none}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes settle{from{transform:scale(1.06)}to{transform:scale(1)}}
-.hero__img{animation:settle 1.6s var(--ease) both}
+.hero__img{animation:settle 1.8s var(--ease) both,kenburns 24s ease-in-out 1.8s infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07) translate(-1%,-1%)}}
 .hero__in>*{animation:rise .9s var(--ease) both}
 .hero__in>:not(h1){animation:rise .9s var(--ease) both,fade .9s var(--ease) both}
 .hero__in>*:nth-child(2){animation-delay:.08s}.hero__in>*:nth-child(3){animation-delay:.16s}.hero__in>*:nth-child(4){animation-delay:.24s}.hero__in>*:nth-child(5){animation-delay:.32s}
@@ -250,3 +251,53 @@ a.frame:hover img,.frame:hover img{transform:scale(1.03)}
 }
 .lead{color:#4a413b}.sec--dark .lead{color:var(--dark-muted)}.hero .lead{color:rgba(246,241,235,.9)}
 .visit__more a{color:var(--ink)}
+
+/* ===== Capa de movimiento (mejora progresiva) =====
+   Sin JS no se oculta nada: solo html.js activa los estados iniciales. */
+/* Titular del hero: palabras que suben dentro de su línea */
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w>span{display:inline-block;animation:wordup 1s var(--ease) both;animation-delay:calc(.12s + var(--i,0)*.07s)}
+@keyframes wordup{from{transform:translateY(105%)}to{transform:none}}
+.hero__in>h1{animation:none}
+.hero__in>.lead{animation-delay:.55s}.hero__in>.hero__cta{animation-delay:.7s}.hero__in>.hero__meta{animation-delay:.85s}
+.nav{animation:fade .8s var(--ease) .2s both}
+/* Aparición al hacer scroll */
+html.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0) * 90ms)}
+html.js .rv.in,html.rv-done .rv{opacity:1;transform:none}
+html.js .rv-img{overflow:hidden}
+html.js .rv-img img{transform:scale(1.12);transition:transform 1.4s var(--ease)}
+html.js .rv-img.in img,html.rv-done .rv-img img{transform:scale(1)}
+html.js .rv-img.in:hover img{transform:scale(1.04)}
+/* Paralaje suave dentro del marco (solo escritorio) */
+.px img{will-change:transform}
+/* Botones y enlaces */
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn:hover::after{transform:translateX(120%)}
+.btn:hover{transform:translateY(-1px)}
+.btn .wa-ic{transition:transform .3s var(--ease)}
+.btn:hover .wa-ic{transform:rotate(-12deg) scale(1.1)}
+.row{transition:background-color .3s var(--ease)}
+.row__name{transition:transform .35s var(--ease)}
+.row:hover .row__name{transform:translateX(6px)}
+.steps li::before{transition:color .4s var(--ease),transform .4s var(--ease)}
+.steps li:hover::before{color:var(--dark-ink);transform:translateY(-4px)}
+/* WhatsApp flotante: aviso suave */
+.float .f-wa{position:relative}
+.float .f-wa::before,.float .f-wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;opacity:0;animation:ring 3.2s ease-out 2s infinite}
+.float .f-wa::after{animation-delay:3.1s}
+@keyframes ring{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(1.7);opacity:0}}
+.float a{animation:popin .6s var(--ease) both}.float a:nth-child(1){animation-delay:1.1s}.float a:nth-child(2){animation-delay:1.2s}.float a:nth-child(3){animation-delay:1s}
+@keyframes popin{from{opacity:0;transform:translateY(12px) scale(.9)}to{opacity:1;transform:none}}
+/* FAQ: apertura y cierre suaves */
+.faq details>p{transform-origin:top}
+.faq details[open]>p{animation:faqin .4s var(--ease)}
+.faq details.closing>p{animation:faqout .25s var(--ease) forwards}
+@keyframes faqin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes faqout{to{opacity:0;transform:translateY(-8px)}}
+.faq summary{transition:color .25s var(--ease)}.faq summary:hover{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){
+  html.js .rv,html.js .rv-img img{opacity:1!important;transform:none!important}
+  .hero h1 .w>span{transform:none}
+  .float .f-wa::before,.float .f-wa::after{display:none}
+}
