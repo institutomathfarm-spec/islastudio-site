@@ -303,3 +303,24 @@ html.js .rv-img.in:hover img{transform:scale(1.04)}
   .hero h1 .w>span{transform:none}
   .float .f-wa::before,.float .f-wa::after{display:none}
 }
+
+/* Hero simple y calmado */
+.hero{align-items:center}
+.hero__in{padding-block:120px 96px}
+.hero h1{font-size:clamp(56px,9vw,136px);line-height:.98;letter-spacing:-.015em}
+.hero .lead{margin-top:28px;font-size:clamp(17px,1.4vw,20px);max-width:28em}
+.hero__cta{margin-top:44px;align-items:center;gap:32px}
+.hero__link{color:var(--dark-ink);font-size:15px;min-height:44px;display:inline-flex;align-items:center;opacity:.85}
+.hero__link:hover{opacity:1}
+@media (max-width:700px){
+  .hero{align-items:flex-end}
+  .hero__in{padding-block:120px 56px}
+  .hero__cta{flex-direction:column;align-items:stretch;gap:12px}
+  .hero__link{justify-content:center}
+}
+/* Los botones flotantes y la barra móvil aparecen al salir del hero */
+html.js .float,html.js .bar{opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+html.js .float{transform:translateY(16px)}
+html.js .bar{transform:translateY(100%)}
+html.js.past-hero .float,html.js.past-hero .bar{opacity:1;pointer-events:auto;transform:none}
+html.js .float a{animation:none}

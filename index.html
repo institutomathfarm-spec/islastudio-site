@@ -326,6 +326,27 @@ html.js .rv-img.in:hover img{transform:scale(1.04)}
   .hero h1 .w>span{transform:none}
   .float .f-wa::before,.float .f-wa::after{display:none}
 }
+
+/* Hero simple y calmado */
+.hero{align-items:center}
+.hero__in{padding-block:120px 96px}
+.hero h1{font-size:clamp(56px,9vw,136px);line-height:.98;letter-spacing:-.015em}
+.hero .lead{margin-top:28px;font-size:clamp(17px,1.4vw,20px);max-width:28em}
+.hero__cta{margin-top:44px;align-items:center;gap:32px}
+.hero__link{color:var(--dark-ink);font-size:15px;min-height:44px;display:inline-flex;align-items:center;opacity:.85}
+.hero__link:hover{opacity:1}
+@media (max-width:700px){
+  .hero{align-items:flex-end}
+  .hero__in{padding-block:120px 56px}
+  .hero__cta{flex-direction:column;align-items:stretch;gap:12px}
+  .hero__link{justify-content:center}
+}
+/* Los botones flotantes y la barra móvil aparecen al salir del hero */
+html.js .float,html.js .bar{opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+html.js .float{transform:translateY(16px)}
+html.js .bar{transform:translateY(100%)}
+html.js.past-hero .float,html.js.past-hero .bar{opacity:1;pointer-events:auto;transform:none}
+html.js .float a{animation:none}
 </style>
 <script type="application/ld+json">
 {
@@ -371,14 +392,12 @@ html.js .rv-img.in:hover img{transform:scale(1.04)}
       <img class="hero__img" src="img/v3/hero-1920.webp" srcset="img/v3/hero-1280.webp 1280w, img/v3/hero-1920.webp 1920w" sizes="100vw" width="1920" height="864" alt="Uñas largas en punta con francesa negra y diseño a mano" fetchpriority="high">
     </picture>
     <div class="wrap hero__in">
-      <p class="eyebrow eyebrow--light">Uñas y cosmetología · San Martín de Porres</p>
-      <h1 id="hero-h"><span class="w"><span data-i="0">Tus</span></span> <span class="w"><span data-i="1">uñas,</span></span> <span class="w"><span data-i="2">a</span></span> <span class="w"><span data-i="3">tu</span></span><br><span class="w"><span data-i="4">manera,</span></span> <span class="w"><span data-i="5">en</span></span><br><span class="w"><span data-i="6">Lima</span></span> <span class="w"><span data-i="7">Norte</span></span></h1>
-      <p class="lead">Manicure, gel, acrílicas, nail art y pedicure en San Martín de Porres. Nos mandas tu idea por WhatsApp y te separamos el turno.</p>
+      <h1 id="hero-h"><span class="w"><span data-i="0">Uñas</span></span> <span class="w"><span data-i="1">hechas</span></span><br><span class="w"><span data-i="2">a</span></span> <span class="w"><span data-i="3">tu</span></span> <span class="w"><span data-i="4">medida</span></span></h1>
+      <p class="lead">Estudio de uñas y cosmetología en San Martín de Porres.</p>
       <div class="hero__cta">
         <a class="btn btn--light" href="https://wa.me/51963281858?text=Hola%20Isla%20Studio%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.1.56 4.17 1.62 5.98L4 29l8.27-1.6a12.1 12.1 0 0 0 3.77.6C22.68 28 28 22.63 28 16.02 28 9.4 22.68 3 16.04 3Zm0 22.6c-1.2 0-2.4-.2-3.53-.6l-.5-.17-4.9.95.98-4.75-.2-.5a9.7 9.7 0 0 1-1.48-5.17c0-5.4 4.32-9.79 9.63-9.79 5.3 0 9.62 4.4 9.62 10.45 0 5.4-4.32 9.58-9.62 9.58Zm5.29-7.16c-.29-.15-1.71-.85-1.98-.95-.26-.1-.46-.15-.65.15-.19.29-.75.94-.92 1.13-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.12-.6.13-.13.3-.34.44-.5.15-.18.2-.3.29-.5.1-.19.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.49-.65-.5h-.55c-.2 0-.5.08-.77.37-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.34.69.3 1.22.47 1.64.6.69.22 1.32.19 1.81.12.55-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z"/></svg>Reservar por WhatsApp</a>
-        <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+        <a class="hero__link link" href="#servicios">Ver servicios</a>
       </div>
-      <div class="hero__meta"><span>San Martín de Porres, Lima</span><span>Citas al +51 963 281 858</span><span>Diseños a pedido</span></div>
     </div>
   </section>
 
@@ -579,7 +598,7 @@ html.js .rv-img.in:hover img{transform:scale(1.04)}
 </nav>
 <script>
 (function(){var n=document.getElementById('nav'),b=n.querySelector('.menu-btn');
-function s(){n.classList.toggle('is-solid',window.scrollY>40)}s();addEventListener('scroll',s,{passive:true});
+function s(){n.classList.toggle('is-solid',window.scrollY>40);document.documentElement.classList.toggle('past-hero',window.scrollY>innerHeight*.6)}s();addEventListener('scroll',s,{passive:true});
 b.addEventListener('click',function(){var o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',o);b.textContent=o?'Cerrar':'Menú'});
 n.querySelectorAll('#links a').forEach(function(a){a.addEventListener('click',function(){n.classList.remove('is-open');b.setAttribute('aria-expanded','false');b.textContent='Menú'})});})();
 </script>
